@@ -1,0 +1,27 @@
+.btn {
+  @apply transition-colors h-fit;
+}
+
+.red {
+  @apply bg-red-200 hover:bg-red-400;
+}
+
+.red:hover svg path {
+  @apply fill-white;
+}
+
+.white {
+  @apply bg-white hover:bg-red-100 active:bg-red-300;
+}
+
+.white:active svg path {
+  @apply fill-white;
+}
+
+.small {
+  @apply p-2.5 rounded-[10px];
+}
+
+.large {
+  @apply p-3.5 rounded-[20px];
+}
