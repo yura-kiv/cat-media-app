@@ -5,7 +5,7 @@ type CustomSelectProps = {
   label: string;
   options: string[];
   value: string;
-  setValue: (value: string) => void;
+  setValue: (value: any) => void;
   className?: string;
 };
 

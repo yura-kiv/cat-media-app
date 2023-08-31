@@ -6,12 +6,26 @@ interface IconButtonProps {
   color: "white" | "red";
   className?: string;
   icon: React.ReactNode;
+  onClick?: () => void;
 }
 
-const IconButton: React.FC<IconButtonProps> = ({ size, icon, color, className = "" }) => {
+const IconButton: React.FC<IconButtonProps> = ({
+  size,
+  icon,
+  color,
+  className = "",
+  onClick = () => {},
+}) => {
   const btnSize = size === "small" ? styles.small : styles.large;
   const btnColor = color === "white" ? styles.white : styles.red;
-  return <button className={[styles.btn, btnSize, btnColor, className].join(" ")}>{icon}</button>;
+  return (
+    <button
+      onClick={onClick}
+      className={[styles.btn, btnSize, btnColor, className].join(" ")}
+    >
+      {icon}
+    </button>
+  );
 };
 
 export default IconButton;

@@ -1,46 +1,69 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import IconButton from "../Buttons/IconButton";
 import { ReactComponent as ReloadIcon } from "../../assets/icons/update-20.svg";
-import { orderOptions, typeOptions, countPerPageOptions, breedsDefault } from "./selectsAsset";
-import useApi from "../../hooks/useApi";
+import {
+  orderOptions,
+  typeOptions,
+  limitPerPageOptions,
+  breedsDefaultOptions,
+} from "./selectsAsset";
+import { useAppDispatch, useAppSelector } from "../../hooks/store";
+import {
+  setBreed,
+  setLimit,
+  setOrder,
+  seFiltersToInitialState,
+  setType,
+  fetchCatImages,
+} from "../../store/slices/gallerySlice";
+import { useGetBreedsQuery } from "../../store/api/endpointsQuery";
+import { BreedRes } from "../../models/catApi";
 
 const GalleryFilters = () => {
-  const [order, setOrder] = useState(orderOptions[0]);
-  const [type, setType] = useState(typeOptions[0]);
-  const [count, setCount] = useState(countPerPageOptions[0]);
-  const [breed, setBreed] = useState("None");
-  const breedsList = useApi("breeds", "/breeds");
+  const breedsInfo = useGetBreedsQuery();
+  const filters = useAppSelector((state) => state.gallerySlice.filters);
+  const dispatch = useAppDispatch();
 
   const getBreeds = useMemo(() => {
-    console.log("here");
     const breeds = ["None"];
-    if (!breedsList.isLoading) {
-      breedsList.data.forEach((data: any) => {
+    if (!breedsInfo.isLoading && breedsInfo.data) {
+      breedsInfo.data.forEach((data: any) => {
         breeds.push(data.name);
       });
       return breeds;
     }
-    return breedsDefault;
-  }, [breedsList.data]);
+    return breedsDefaultOptions;
+  }, [breedsInfo.data]);
+
+  useEffect(() => {
+    dispatch(fetchCatImages({ ...filters, breedId: filters.breed.id }));
+    return () => {
+      dispatch(seFiltersToInitialState());
+    };
+  }, []);
 
   return (
-    <div className="w-full h-fit bg-gray-100 rounded-2xl p-5">
+    <div className="w-full h-fit bg-gray-100 rounded-2xl p-5 mb-3">
       <div className="w-full row-wrapper flex mb-3 gap-3">
         <CustomSelect
           label="Order"
           name="order"
           options={orderOptions}
-          value={order}
-          setValue={setOrder}
+          value={filters.order}
+          setValue={(value) => {
+            dispatch(setOrder(value));
+          }}
           className="w-full"
         />
         <CustomSelect
           label="Type"
           name="type"
           options={typeOptions}
-          value={type}
-          setValue={setType}
+          value={filters.type}
+          setValue={(value) => {
+            dispatch(setType(value));
+          }}
           className="w-full"
         />
       </div>
@@ -48,17 +71,23 @@ const GalleryFilters = () => {
         <CustomSelect
           label="Breed"
           name="breed"
-          options={breedsList.isLoading ? breedsDefault : getBreeds}
-          value={breed}
-          setValue={setBreed}
+          options={getBreeds}
+          value={filters.breed.name}
+          setValue={(value) => {
+            if (breedsInfo.data)
+              dispatch(setBreed({ searchBreed: value, breeds: breedsInfo.data }));
+            else dispatch(setBreed({ searchBreed: value, breeds: [] }));
+          }}
           className="w-full"
         />
         <CustomSelect
           label="Limit"
           name="limit"
-          options={countPerPageOptions}
-          value={count}
-          setValue={setCount}
+          options={limitPerPageOptions}
+          value={filters.limit}
+          setValue={(value) => {
+            dispatch(setLimit(value));
+          }}
           className="w-full"
         />
         <IconButton
@@ -66,6 +95,9 @@ const GalleryFilters = () => {
           size="large"
           icon={<ReloadIcon />}
           className="self-end"
+          onClick={() => {
+            dispatch(fetchCatImages({ ...filters, breedId: filters.breed.id }));
+          }}
         />
       </div>
     </div>
