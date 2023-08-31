@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const LeftSectionContent: React.FC = () => {
   return (
-    <div className="left-section-wrapper w-fit ml-[8%]">
+    <div className="sticky top-5 right-0 w-fit h-fit ml-[8%]">
       <Link to="/">
         <img
           className="mb-20"

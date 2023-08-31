@@ -42,7 +42,7 @@ const GalleryImagesGrid = () => {
         <div className="w-full h-full flex justify-center">
           <Loader className="relative top-40 w-20 h-20 animate-ping" />
         </div>
-      ) : (
+      ) : imagesData.data.length !== 0 ? (
         imagesGridMatrix().map((row, index) => {
           return (
             <div
@@ -61,7 +61,7 @@ const GalleryImagesGrid = () => {
                   >
                     <ImageHoverBlock imageInfo={item} />
                     <img
-                      className="absolute object-cover w-full h-full"
+                      className="relative object-cover w-full h-full"
                       src={item.url}
                       alt={item.id + " cat image"}
                     />
@@ -71,6 +71,10 @@ const GalleryImagesGrid = () => {
             </div>
           );
         })
+      ) : (
+        <span className="w-full p-3 pl-6 bg-gray-100 rounded-2xl text-lg">
+          Images not found :(. Try another filters...
+        </span>
       )}
     </div>
   );

@@ -3,7 +3,7 @@ import AppRouter from "./router/AppRouter";
 
 function App() {
   return (
-    <div className="App relative w-full min-h-screen flex items-top justify-between pb-3 pt-8">
+    <div className="relative w-full min-h-screen flex items-top justify-between pb-3 pt-8">
       <AppRouter />
     </div>
   );

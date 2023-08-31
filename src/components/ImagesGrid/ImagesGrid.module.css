@@ -1,10 +1,10 @@
 .gridWrapper,
 .gridWrapperReverse {
-  @apply relative w-full h-[640px] grid grid-rows-3 grid-cols-3 gap-2.5;
+  @apply relative w-full h-fit grid grid-cols-3 gap-2.5;
 }
 
 .imageWrapper {
-  @apply relative w-full h-full rounded-3xl overflow-hidden hover:cursor-pointer;
+  @apply relative rounded-3xl overflow-hidden hover:cursor-pointer;
 }
 
 .imageWrapper:hover .hoverBlockWrapper {
