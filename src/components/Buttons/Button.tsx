@@ -6,13 +6,25 @@ interface ButtonProps {
   color: "white" | "red";
   className?: string;
   innerContent: React.ReactNode;
+  onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ size, color, innerContent, className = "" }) => {
+const Button: React.FC<ButtonProps> = ({
+  size,
+  color,
+  innerContent,
+  className = "",
+  onClick = () => {},
+}) => {
   const btnSize = size === "small" ? styles.small : styles.large;
   const btnColor = color === "white" ? styles.white : styles.red;
   return (
-    <button className={[styles.btn, btnSize, btnColor, className].join(" ")}>{innerContent}</button>
+    <button
+      onClick={onClick}
+      className={[styles.btn, btnSize, btnColor, className].join(" ")}
+    >
+      {innerContent}
+    </button>
   );
 };
 

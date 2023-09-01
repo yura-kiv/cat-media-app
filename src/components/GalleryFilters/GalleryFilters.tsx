@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, memo } from "react";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import IconButton from "../Buttons/IconButton";
 import { ReactComponent as ReloadIcon } from "../../assets/icons/update-20.svg";
@@ -20,7 +20,7 @@ import {
 import { useGetBreedsQuery } from "../../store/api/endpointsQuery";
 import { BreedRes } from "../../models/catApi";
 
-const GalleryFilters = () => {
+const GalleryFilters = memo(() => {
   const breedsInfo = useGetBreedsQuery();
   const filters = useAppSelector((state) => state.gallerySlice.filters);
   const dispatch = useAppDispatch();
@@ -102,6 +102,6 @@ const GalleryFilters = () => {
       </div>
     </div>
   );
-};
+});
 
 export default GalleryFilters;

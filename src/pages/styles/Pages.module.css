@@ -1,0 +1,3 @@
+.pageWrapper {
+  @apply relative bg-white p-5 rounded-3xl w-full min-h-[calc(100%-90px)];
+}

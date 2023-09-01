@@ -4,7 +4,10 @@ import { Outlet } from "react-router-dom";
 
 const LayoutRightSectionHeader = () => {
   return (
-    <div className="right-section-content relative w-1/2 pr-5">
+    <div
+      id="right-section"
+      className="relative w-1/2 pr-5"
+    >
       <RightSectionHeader />
       <Outlet />
     </div>

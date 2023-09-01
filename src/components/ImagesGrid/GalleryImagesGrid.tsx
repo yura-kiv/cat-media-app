@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { ReactComponent as Loader } from "../../assets/icons/loading-16.svg";
 import { useAppSelector } from "../../hooks/store";
 import styles from "./ImagesGrid.module.css";
@@ -6,6 +6,8 @@ import { ReactComponent as Heart } from "../../assets/icons/fav-30.svg";
 import { ReactComponent as HeartColor } from "../../assets/icons/fav-color-30.svg";
 import IconButton from "../Buttons/IconButton";
 import { CatImagesRes } from "../../models/catApi";
+import MessageBlock from "../MessageBlock/MessageBlock";
+import { ReactComponent as Error } from "../../assets/icons/error-20.svg";
 
 const ImageHoverBlock: React.FC<{ imageInfo: CatImagesRes }> = () => {
   const [like, setLike] = useState(false);
@@ -25,7 +27,7 @@ const ImageHoverBlock: React.FC<{ imageInfo: CatImagesRes }> = () => {
   );
 };
 
-const GalleryImagesGrid = () => {
+const GalleryImagesGrid = memo(() => {
   const imagesData = useAppSelector((state) => state.gallerySlice.catImages);
   const groupSize = 5;
   const imagesGridMatrix = () => {
@@ -72,12 +74,14 @@ const GalleryImagesGrid = () => {
           );
         })
       ) : (
-        <span className="w-full p-3 pl-6 bg-gray-100 rounded-2xl text-lg">
-          Images not found :(. Try another filters...
-        </span>
+        <MessageBlock
+          color="gray"
+          icon={<Error />}
+          innerText="Try another filters... Images not found :^("
+        />
       )}
     </div>
   );
-};
+});
 
 export default GalleryImagesGrid;

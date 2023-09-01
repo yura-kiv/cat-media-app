@@ -1,0 +1,15 @@
+.windowDisplayWrapper {
+  @apply absolute p-5 top-0 left-0 w-full h-screen z-20;
+}
+
+.windowBackdrop {
+  @apply absolute top-0 left-0 w-full h-full bg-black opacity-40;
+}
+
+.windowWrapper {
+  @apply relative w-1/2 h-full ml-auto bg-white opacity-100 rounded-2xl pt-20 px-10;
+}
+
+.dropFileArea {
+  @apply w-full h-1/2 bg-gray-100 border-4 border-dashed border-red-300 rounded-2xl flex items-center justify-center;
+}
