@@ -1,5 +1,5 @@
 .btn {
-  @apply px-6 transition-colors flex items-center;
+  @apply px-6 transition-colors flex items-center tracking-widest uppercase;
 }
 
 .red {

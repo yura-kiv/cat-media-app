@@ -1,5 +1,5 @@
 .windowDisplayWrapper {
-  @apply absolute p-5 top-0 left-0 w-full h-screen z-20;
+  @apply fixed top-0 left-0 p-5 w-full h-screen z-20;
 }
 
 .windowBackdrop {
@@ -7,9 +7,13 @@
 }
 
 .windowWrapper {
-  @apply relative w-1/2 h-full ml-auto bg-white opacity-100 rounded-2xl pt-20 px-10;
+  @apply relative w-1/2 h-full ml-auto bg-white opacity-100 rounded-2xl pt-20 px-10 flex flex-wrap flex-col items-center;
 }
 
 .dropFileArea {
-  @apply w-full h-1/2 bg-gray-100 border-4 border-dashed border-red-300 rounded-2xl flex items-center justify-center;
+  @apply relative w-full mb-3 h-1/2 bg-gray-100 border-4 border-dashed border-red-300 rounded-2xl flex items-center justify-center overflow-hidden;
+}
+
+.dropFileAreaActive {
+  @apply border-red-500;
 }

@@ -4,7 +4,7 @@ import IconButton from "../components/Buttons/IconButton";
 import { ReactComponent as UploadIcon } from "../assets/icons/upload-16.svg";
 import Button from "../components/Buttons/Button";
 import GalleryFilters from "../components/GalleryFilters/GalleryFilters";
-import GalleryImagesGrid from "../components/ImagesGrid/GalleryImagesGrid";
+import GalleryGrid from "../components/ImagesGrid/GalleryGrid";
 import PageHeader from "../components/PageHeader/PageHeader";
 import styles from "./styles/Pages.module.css";
 import UploadWindow from "../components/UploadWindow/UploadWindow";
@@ -41,7 +41,7 @@ const GalleryPage = () => {
         }
       </PageHeader>
       <GalleryFilters />
-      <GalleryImagesGrid />
+      <GalleryGrid />
     </div>
   );
 };

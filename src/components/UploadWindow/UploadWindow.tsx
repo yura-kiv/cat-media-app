@@ -1,21 +1,24 @@
-import React, { SetStateAction, Dispatch, useEffect } from "react";
+import React, { SetStateAction, Dispatch, useEffect, useCallback, useState } from "react";
 import styles from "./UploadWindow.module.css";
-import backgroundImage from "../../assets/images/upload-bg.png";
 import IconButton from "../Buttons/IconButton";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close-20.svg";
-
+import UploadArea, { ImageFile } from "./UploadArea";
+import Button from "../Buttons/Button";
 interface UploadWindowProps {
   active: boolean;
   setActive: Dispatch<SetStateAction<boolean>>;
 }
 
 const UploadWindow: React.FC<UploadWindowProps> = ({ active, setActive }) => {
+  const [imageFile, setImageFile] = useState<ImageFile | null>(null);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "auto";
     };
   }, []);
+
   return (
     <div className={styles.windowDisplayWrapper}>
       <div
@@ -47,17 +50,18 @@ const UploadWindow: React.FC<UploadWindowProps> = ({ active, setActive }) => {
           </a>{" "}
           or face deletion.
         </span>
-        <div className={styles.dropFileArea}>
-          <span className="text-lg z-10 text-gray-500">
-            <b className="text-black">Drag here</b> your file or{" "}
-            <b className="text-black">Click here</b> to upload
-          </span>
-          <img
-            className="absolute w-1/3"
-            src={backgroundImage}
-            alt="background image drop area"
+        <UploadArea
+          imageFile={imageFile}
+          setImageFile={setImageFile}
+        />
+        {imageFile?.file && (
+          <Button
+            color="red"
+            size="large"
+            innerContent="UPLOAD PHOTO"
+            className="relative"
           />
-        </div>
+        )}
       </div>
     </div>
   );

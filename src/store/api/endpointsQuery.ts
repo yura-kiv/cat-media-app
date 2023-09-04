@@ -6,9 +6,7 @@ const extendedApi = catApiQuery.injectEndpoints({
     getBreeds: builder.query<BreedRes[], void>({
       query: () => `breeds`,
       providesTags: (result, error, arg) =>
-        result
-          ? [...result.map(({ id }) => ({ type: "Breeds" as const, id })), "Breeds"]
-          : ["Breeds"],
+        result ? [...result.map(({ id }) => ({ type: "Breed" as const, id })), "Breed"] : ["Breed"],
     }),
   }),
   overrideExisting: false,

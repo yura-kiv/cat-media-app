@@ -3,7 +3,7 @@ import styles from "./styles/IconButton.module.css";
 
 interface IconButtonProps {
   size: "small" | "large";
-  color: "white" | "red";
+  color: "white" | "red" | "gray";
   className?: string;
   icon: React.ReactNode;
   onClick?: () => void;
@@ -17,7 +17,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   onClick = () => {},
 }) => {
   const btnSize = size === "small" ? styles.small : styles.large;
-  const btnColor = color === "white" ? styles.white : styles.red;
+  const btnColor = color === "white" ? styles.white : color === "red" ? styles.red : styles.gray;
   return (
     <button
       onClick={onClick}
