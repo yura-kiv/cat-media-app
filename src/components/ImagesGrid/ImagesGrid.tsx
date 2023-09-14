@@ -1,20 +1,18 @@
-import React, { useEffect, useState, memo } from "react";
-import { useAppSelector } from "../../hooks/store";
+import React from "react";
 import styles from "./ImagesGrid.module.css";
-import IconButton from "../Buttons/IconButton";
-import { CatImagesRes } from "../../models/catApi";
-import MessageBlock from "../MessageBlock/MessageBlock";
+
+export type GridImageBlock = {
+  id: string;
+  src: string;
+  alt: string;
+};
 
 export interface ImagesGridProps {
-  imageBlock: {
-    id: string;
-    src: string;
-    alt: string;
-  };
-  hoverBlockButton: JSX.Element;
+  imageBlock: GridImageBlock;
+  hoverBlockButton: React.ReactNode;
 }
 
-const ImagesGrid: React.FC<{ elements: ImagesGridProps[] }> = memo(({ elements }) => {
+const ImagesGrid: React.FC<{ elements: ImagesGridProps[] }> = ({ elements }) => {
   const groupSize = 5;
   const imagesGridMatrix = () => {
     const result = [];
@@ -44,7 +42,7 @@ const ImagesGrid: React.FC<{ elements: ImagesGridProps[] }> = memo(({ elements }
                 >
                   <div className={styles.hoverBlockWrapper}>
                     {cell.hoverBlockButton}
-                    <div className="absolute top-0 left-0 w-full h-full bg-red-300 opacity-30 z-20"></div>
+                    <div className="absolute top-0 left-0 w-full h-full bg-red-100 opacity-40 z-20"></div>
                   </div>
                   <img
                     className="relative object-cover w-full h-full"
@@ -59,6 +57,6 @@ const ImagesGrid: React.FC<{ elements: ImagesGridProps[] }> = memo(({ elements }
       })}{" "}
     </div>
   );
-});
+};
 
 export default ImagesGrid;

@@ -7,7 +7,7 @@
 }
 
 .windowWrapper {
-  @apply relative w-1/2 h-full ml-auto bg-white opacity-100 rounded-2xl pt-20 px-10 flex flex-wrap flex-col items-center;
+  @apply relative w-1/2 h-full ml-auto bg-white opacity-100 rounded-2xl pt-20 px-10 flex flex-col items-center;
 }
 
 .dropFileArea {

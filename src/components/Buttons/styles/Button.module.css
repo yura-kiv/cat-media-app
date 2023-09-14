@@ -1,9 +1,9 @@
 .btn {
-  @apply px-6 transition-colors flex items-center tracking-widest uppercase;
+  @apply px-6 transition-colors flex items-center tracking-[2px] font-normal uppercase;
 }
 
 .red {
-  @apply text-red-400 text-lg bg-red-200 hover:bg-red-400 hover:text-white;
+  @apply text-red-400 bg-red-200 hover:bg-red-400 hover:text-white;
 }
 
 .red:hover svg path {
@@ -11,13 +11,13 @@
 }
 
 .white {
-  @apply text-red-400 bg-white hover:bg-red-100 hover:text-white;
+  @apply text-red-300 bg-white hover:bg-red-300 hover:text-white active:bg-red-400;
 }
 
 .small {
-  @apply py-2.5 rounded-[10px];
+  @apply py-2.5 text-xs rounded-xl;
 }
 
 .large {
-  @apply py-3 rounded-[20px];
+  @apply py-3 text-base rounded-2xl;
 }

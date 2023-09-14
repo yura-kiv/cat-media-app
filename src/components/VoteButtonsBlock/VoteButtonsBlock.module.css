@@ -1,0 +1,36 @@
+.reactionBtnsWrapper {
+  @apply absolute w-44 h-16 border-4 border-white rounded-2xl flex gap-0.5 overflow-hidden bg-white
+      -bottom-8 left-1/2 -translate-x-1/2;
+}
+
+.reactionBtn {
+  @apply grow flex items-center justify-center transition-colors;
+}
+
+.reactionBtn_green {
+  @apply bg-green-300 hover:bg-green-100;
+}
+
+.reactionBtn_red {
+  @apply bg-red-300 hover:bg-red-100;
+}
+
+.reactionBtn_yellow {
+  @apply bg-amber-300 hover:bg-amber-100;
+}
+
+.reactionBtn svg path {
+  @apply fill-white transition-colors;
+}
+
+.reactionBtn_green:hover svg path {
+  @apply fill-green-300;
+}
+
+.reactionBtn_red:hover svg path {
+  @apply fill-red-300;
+}
+
+.reactionBtn_yellow:hover svg path {
+  @apply fill-amber-300;
+}

@@ -1,4 +1,4 @@
-import { BreedRes, CatImagesRes } from "../../models/catApi";
+import { BreedRes, CatImageRes } from "../../models/catApi";
 import { catApiQuery } from "./catApi";
 
 const extendedApi = catApiQuery.injectEndpoints({
@@ -8,8 +8,12 @@ const extendedApi = catApiQuery.injectEndpoints({
       providesTags: (result, error, arg) =>
         result ? [...result.map(({ id }) => ({ type: "Breed" as const, id })), "Breed"] : ["Breed"],
     }),
+    getBreedImages: builder.query<CatImageRes[], string>({
+      query: (id) => ({ url: `images/search?breed_ids=${id}&limit=8` }),
+    }),
   }),
+
   overrideExisting: false,
 });
 
-export const { useGetBreedsQuery } = extendedApi;
+export const { useGetBreedsQuery, useGetBreedImagesQuery } = extendedApi;

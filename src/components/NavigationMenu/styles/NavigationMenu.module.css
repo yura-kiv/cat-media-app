@@ -1,22 +1,9 @@
 .imgWrapper {
-  @apply relative w-36 h-48 box-border rounded-[20px] border-4 mb-2.5 cursor-pointer transition-all hover:border-white;
-}
-
-.img {
-  @apply absolute bottom-0 left-0 w-full h-full;
-}
-
-.btn {
-  @apply block text-center bg-white w-full py-2.5 rounded-xl text-red-400 font-normal text-xs tracking-[2px] transition-colors
-  hover:bg-red-100 active:bg-red-300 active:text-white;
-}
-
-.btn_active {
-  @apply bg-red-300 text-white hover:text-red-400 active:text-white;
+  @apply relative block w-36 h-48 box-border rounded-[20px] border-4 mb-2.5 cursor-pointer transition-all hover:border-white;
 }
 
 .imgWrapper:hover + .btn {
-  @apply bg-red-100;
+  @apply bg-red-200;
 }
 
 .imgWrapper:active + .btn {
@@ -33,4 +20,25 @@
 
 .imgWrapper_yellow {
   @apply bg-yellow-200 border-yellow-100 active:border-yellow-400;
+}
+
+.imgWrapperActive {
+  @apply border-red-300;
+}
+
+.imgWrapperActive:hover + .btn {
+  @apply text-red-400;
+}
+
+.img {
+  @apply absolute bottom-0 left-0 w-full h-full;
+}
+
+.btn {
+  @apply block text-center bg-white w-full py-2.5 rounded-xl text-red-400 font-normal text-xs tracking-[2px] transition-colors
+  uppercase hover:bg-red-300 hover:text-white active:bg-red-400 active:text-white;
+}
+
+.btn_active {
+  @apply bg-red-400 text-white hover:text-white active:text-white;
 }

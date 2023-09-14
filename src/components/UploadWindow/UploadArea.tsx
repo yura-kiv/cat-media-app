@@ -2,9 +2,10 @@ import React, { useState, useCallback, Dispatch, SetStateAction } from "react";
 import { useDropzone } from "react-dropzone";
 import backgroundImage from "../../assets/images/upload-bg.png";
 import styles from "./UploadWindow.module.css";
+import { arrayBuffer } from "stream/consumers";
 
 export interface ImageFile {
-  file: string | ArrayBuffer | null;
+  fileURL: string | ArrayBuffer | null;
   name: string | null;
 }
 
@@ -17,7 +18,8 @@ const UploadArea: React.FC<UploadAreaProps> = ({ imageFile, setImageFile }) => {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = new FileReader();
     file.onload = function () {
-      setImageFile({ file: file.result, name: acceptedFiles[0].name });
+      const dataURL = file.result as string;
+      setImageFile({ fileURL: dataURL, name: acceptedFiles[0].name });
     };
     file.readAsDataURL(acceptedFiles[0]);
   }, []);
@@ -44,7 +46,7 @@ const UploadArea: React.FC<UploadAreaProps> = ({ imageFile, setImageFile }) => {
         {imageFile ? (
           <img
             className="absolute object-cover object-center w-full h-full"
-            src={imageFile.file?.toString()}
+            src={imageFile.fileURL?.toString()}
             alt=""
           />
         ) : (

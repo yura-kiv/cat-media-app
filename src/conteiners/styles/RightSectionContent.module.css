@@ -1,0 +1,7 @@
+.activeBtn button {
+  @apply bg-red-400;
+}
+
+.activeBtn button svg path {
+  @apply fill-white;
+}

@@ -3,7 +3,7 @@ import LeftSectionContent from "../conteiners/LeftSectionContent";
 import { Outlet } from "react-router-dom";
 import RightSectionHeader from "../conteiners/RightSectionHeader";
 
-const Layout: React.FC = () => {
+const LayoutMain: React.FC = () => {
   return (
     <>
       <LeftSectionContent />
@@ -12,4 +12,4 @@ const Layout: React.FC = () => {
   );
 };
 
-export default Layout;
+export default LayoutMain;

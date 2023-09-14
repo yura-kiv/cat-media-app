@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search-20.svg";
 import IconButton from "../Buttons/IconButton";
+import { useNavigate } from "react-router-dom";
 
 const SearchInput: React.FC = ({}) => {
   const [value, setValue] = useState("");
+  const navigate = useNavigate();
 
   return (
-    <div className="relative flex items-center grow">
+    <form
+      className="relative flex items-center grow"
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+    >
       <input
         type="text"
         value={value}
@@ -23,9 +30,14 @@ const SearchInput: React.FC = ({}) => {
           size="small"
           color="red"
           icon={<SearchIcon />}
+          onClick={() => {
+            if (value === "") return;
+            setValue("");
+            navigate(`/search/${value}`);
+          }}
         ></IconButton>
       </div>
-    </div>
+    </form>
   );
 };
 

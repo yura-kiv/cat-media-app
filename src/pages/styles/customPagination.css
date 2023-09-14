@@ -1,0 +1,7 @@
+.swiper-pagination {
+  @apply bg-white p-2.5 rounded-full flex gap-1 top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-red-300;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-red-400;
+}

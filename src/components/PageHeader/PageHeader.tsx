@@ -16,7 +16,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ pageName, children }) => {
         size="large"
         icon={<BackIcon />}
       ></IconButton>
-      <span className="py-2 px-6 uppercase bg-red-400 text-white rounded-2xl text-xl font-medium tracking-widest ml-3">
+      <span className="py-2 px-6 uppercase bg-red-300 text-white rounded-2xl text-xl font-medium tracking-widest ml-3">
         {pageName}
       </span>
       {children}

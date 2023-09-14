@@ -1,0 +1,23 @@
+.loaderWrapper {
+  @apply w-full flex justify-center items-center;
+}
+
+.loaderWrapperLarge {
+  @apply h-60;
+}
+
+.loaderWrapperSmall {
+  @apply h-full;
+}
+
+.loader {
+  @apply relative animate-ping;
+}
+
+.loaderSmall {
+  @apply w-8 h-8;
+}
+
+.loaderLarge {
+  @apply w-20 h-20;
+}

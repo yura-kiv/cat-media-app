@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import logo from "../assets/images/logo.png";
 import NavigationMenu from "../components/NavigationMenu/NavigationMenu";
 import { Link } from "react-router-dom";
 
-const LeftSectionContent: React.FC = () => {
+const LeftSectionContent: React.FC = memo(() => {
   return (
     <div className="sticky top-5 right-0 w-fit h-fit ml-[8%] mr-3">
       <Link to="/">
@@ -21,6 +21,6 @@ const LeftSectionContent: React.FC = () => {
       <NavigationMenu />
     </div>
   );
-};
+});
 
 export default LeftSectionContent;

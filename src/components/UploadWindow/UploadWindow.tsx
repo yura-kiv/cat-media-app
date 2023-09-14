@@ -4,6 +4,15 @@ import IconButton from "../Buttons/IconButton";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close-20.svg";
 import UploadArea, { ImageFile } from "./UploadArea";
 import Button from "../Buttons/Button";
+import { API_SUB_ID, catApiThunk } from "../../store/api/catApi";
+import { UploadImageRes } from "../../models/catApi";
+import { AxiosError } from "axios";
+import Loader from "../Loader/Loader";
+import MessageBlock from "../MessageBlock/MessageBlock";
+import { ReactComponent as Success } from "../../assets/icons/success-20.svg";
+import { ReactComponent as Error } from "../../assets/icons/error-20.svg";
+import { dataURItoBlob } from "../../helpers/uploadHelper";
+
 interface UploadWindowProps {
   active: boolean;
   setActive: Dispatch<SetStateAction<boolean>>;
@@ -11,6 +20,53 @@ interface UploadWindowProps {
 
 const UploadWindow: React.FC<UploadWindowProps> = ({ active, setActive }) => {
   const [imageFile, setImageFile] = useState<ImageFile | null>(null);
+  const [imageUploadProcess, setImageUploadProcess] = useState<{
+    isLoading: boolean;
+    onError: null | string;
+    onSuccess: null | UploadImageRes;
+  }>({
+    isLoading: false,
+    onError: null,
+    onSuccess: null,
+  });
+
+  const uploadBtnHandler = () => {
+    if (imageFile?.fileURL) {
+      setImageUploadProcess({ onError: null, onSuccess: null, isLoading: true });
+      const fileBinary = dataURItoBlob(imageFile.fileURL.toString());
+      catApiThunk
+        .post(
+          "images/upload",
+          {
+            file: fileBinary,
+            sub_id: API_SUB_ID,
+          },
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((res) => {
+          setImageUploadProcess({
+            onError: null,
+            isLoading: false,
+            onSuccess: res.data,
+          });
+          setImageFile(null);
+          console.log("response: ", res.request);
+        })
+        .catch((err: AxiosError) => {
+          setImageUploadProcess({
+            onSuccess: null,
+            isLoading: false,
+            onError: err.response?.data!.toString(),
+          });
+          setImageFile(null);
+          console.log("error: ", err);
+        });
+    }
+  };
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -54,12 +110,28 @@ const UploadWindow: React.FC<UploadWindowProps> = ({ active, setActive }) => {
           imageFile={imageFile}
           setImageFile={setImageFile}
         />
-        {imageFile?.file && (
+        {imageFile?.fileURL && !imageUploadProcess.isLoading && (
           <Button
             color="red"
             size="large"
             innerContent="UPLOAD PHOTO"
-            className="relative"
+            className="relative mb-3"
+            onClick={uploadBtnHandler}
+          />
+        )}{" "}
+        {imageUploadProcess.isLoading && <Loader size="large" />}
+        {imageUploadProcess.onSuccess && (
+          <MessageBlock
+            color="gray"
+            icon={<Success />}
+            innerContent="Thanks for the Upload - Cat found!"
+          />
+        )}
+        {imageUploadProcess.onError && (
+          <MessageBlock
+            color="gray"
+            icon={<Error />}
+            innerContent={`No Cat found - try a different one! (Err: ${imageUploadProcess.onError})`}
           />
         )}
       </div>

@@ -1,9 +1,14 @@
 import React, { ChangeEvent } from "react";
 
+export type OptionSelect = {
+  value: string | number;
+  optionText: string;
+};
+
 type CustomSelectProps = {
   name: string;
   label: string;
-  options: string[];
+  options: OptionSelect[];
   value: string;
   setValue: (value: any) => void;
   className?: string;
@@ -33,8 +38,15 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         value={value}
         onChange={handleChange}
       >
-        {options.map((option) => {
-          return <option key={option}>{option}</option>;
+        {options.map((option, index) => {
+          return (
+            <option
+              value={option.value}
+              key={option.value + index.toString()}
+            >
+              {option.optionText}
+            </option>
+          );
         })}
       </select>
     </div>

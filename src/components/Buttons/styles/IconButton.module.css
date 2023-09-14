@@ -23,9 +23,17 @@
 }
 
 .small {
-  @apply p-2.5 rounded-[10px];
+  @apply p-2.5 rounded-xl;
 }
 
 .large {
-  @apply p-3.5 rounded-[20px];
+  @apply p-3.5 rounded-2xl;
+}
+
+.btnActive {
+  @apply bg-red-400 hover:bg-red-300 active:bg-red-400;
+}
+
+.btnActive svg path {
+  @apply fill-white;
 }

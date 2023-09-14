@@ -1,62 +1,64 @@
-import React, { useState } from "react";
-import styles from "./ImagesGrid.module.css";
-import IconButton from "../Buttons/IconButton";
-import { ReactComponent as Heart } from "../../assets/icons/fav-30.svg";
-import { ReactComponent as HeartColor } from "../../assets/icons/fav-color-30.svg";
-import { BreedRes, CatImagesRes } from "../../models/catApi";
-import { useAppSelector } from "../../hooks/store";
+import React from "react";
+import { BreedRes } from "../../models/catApi";
 import ImagesGrid, { ImagesGridProps } from "./ImagesGrid";
-import { ReactComponent as Loader } from "../../assets/icons/loading-16.svg";
 import MessageBlock from "../MessageBlock/MessageBlock";
 import { ReactComponent as Error } from "../../assets/icons/error-20.svg";
-import { useGetBreedsQuery } from "../../store/api/endpointsQuery";
+import { useGetBreedsQuery } from "../../store/api/breedsQuery";
 import Button from "../Buttons/Button";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../../hooks/store";
+import Loader from "../Loader/Loader";
+import { filterBreeds } from "../../helpers/breedsHelper";
+import { getGridElement } from "./gridHelper";
 
-const ImageHoverButton: React.FC<{ breedInfo: BreedRes }> = ({ breedInfo }) => {
+export const BreedHoverButton: React.FC<{ breedInfo: BreedRes }> = ({ breedInfo }) => {
   return (
-    <Button
-      color="red"
-      size="large"
-      innerContent={breedInfo.name}
-    />
+    <Link
+      className="self-end mb-3 z-30 mx-3"
+      to={`/breeds/${breedInfo.id}`}
+    >
+      <Button
+        color="white"
+        size="small"
+        innerContent={breedInfo.name}
+        className="z-30"
+      />
+    </Link>
   );
 };
 
 const BreedsGrid = () => {
-  const breedsInfo = useGetBreedsQuery();
-  const defaultUrlImage = "https://api.thecatapi.com/v1/images/";
-
-  const getBreedsGridElements = (): ImagesGridProps[] => {
-    const gridElements: ImagesGridProps[] = [];
-    if (breedsInfo.data) {
-      breedsInfo.data.forEach((breed) => {
-        const gridElement = {
-          imageBlock: {
-            id: breed.id,
-            src: defaultUrlImage + breed.reference_image_id,
-            alt: breed.id + " breed preview image",
-          },
-          hoverBlockButton: <ImageHoverButton breedInfo={breed} />,
-        };
-        gridElements.push(gridElement);
-      });
-    }
-    return gridElements;
-  };
+  const filters = useAppSelector((state) => state.breedSlice.filters);
+  const breedsInfo = useGetBreedsQuery(undefined, {
+    selectFromResult: (breedsInfo) => {
+      let sortedData;
+      if (breedsInfo.data) sortedData = filterBreeds(filters, breedsInfo.data);
+      return {
+        ...breedsInfo,
+        data: sortedData,
+      };
+    },
+  });
 
   return (
     <>
       {breedsInfo.isLoading ? (
-        <div className="w-full h-full flex justify-center">
-          <Loader className="relative top-40 w-20 h-20 animate-ping" />
-        </div>
+        <Loader size="large" />
       ) : breedsInfo.data ? (
-        <ImagesGrid elements={getBreedsGridElements()} />
+        <ImagesGrid
+          elements={breedsInfo.data.map((breed) => {
+            const { id, image } = breed;
+            return getGridElement(
+              { id, src: image?.url, alt: id + " breed grid image" },
+              <BreedHoverButton breedInfo={breed} />
+            );
+          })}
+        />
       ) : (
         <MessageBlock
           color="gray"
           icon={<Error />}
-          innerText="Breeds not found :^("
+          innerContent={"Breeds not found :^("}
         />
       )}
     </>

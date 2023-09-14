@@ -3,9 +3,17 @@ interface Weight {
   metric: string;
 }
 
+interface BreedImagePreview {
+  height: number;
+  id: string;
+  url: string;
+  width: number;
+}
+
 export interface BreedRes {
   weight: Weight;
   id: string;
+  image: BreedImagePreview;
   name: string;
   cfa_url: string;
   vetstreet_url: string;
@@ -43,10 +51,45 @@ export interface BreedRes {
   reference_image_id: string;
 }
 
-export interface CatImagesRes {
+export interface CatImageRes {
   breeds: BreedRes[];
   id: string;
   url: string;
   width: number;
   height: number;
+}
+
+export interface FavouriteImageRes {
+  id: number;
+  image_id: string;
+  sub_id: null;
+  created_at: string;
+  image: {
+    id: string;
+    url: string;
+  };
+}
+
+export interface LikeImageRes {
+  id: number;
+  image_id: string;
+  sub_id: string;
+  created_at: string;
+  value: number;
+  country_code: string;
+  image: {
+    id: string;
+    url: string;
+  };
+}
+
+export interface UploadImageRes {
+  approved: number;
+  height: number;
+  id: string;
+  original_filename: string;
+  pending: number;
+  sub_id: string;
+  url: string;
+  width: number;
 }

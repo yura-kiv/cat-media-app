@@ -1,44 +1,36 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import CustomSelect from "../CustomSelect/CustomSelect";
-import { useGetBreedsQuery } from "../../store/api/endpointsQuery";
-import {
-  breedLimitOptions,
-  breedsDefaultOptions,
-  getBreedId,
-  getBreedsNames,
-} from "../helpers/filtersAssets";
+import { useGetBreedsQuery } from "../../store/api/breedsQuery";
 import IconButton from "../Buttons/IconButton";
 import { ReactComponent as SortIconZA } from "../../assets/icons/soft-revert-20.svg";
 import { ReactComponent as SortIconAZ } from "../../assets/icons/sort-20.svg";
-import { BreedFilters } from "../../models/filters";
+import { useAppDispatch, useAppSelector } from "../../hooks/store";
+import { setBreed, setLimit, setOrder } from "../../store/slices/breedSlice";
+import { getBreedsSelectOptions } from "../../helpers/breedsHelper";
+import { BreedsBreedOption } from "./breedFiltersTypes";
+import { breedBreedsDafaultOptions, breedLimitOptions } from "./breedFiltersOptions";
 
 const BreedsFilters = () => {
-  const breedsInfo = useGetBreedsQuery();
-  const [filters, setFilters] = useState<BreedFilters>({
-    breed: { name: breedsDefaultOptions[0], id: "" },
-    limit: breedLimitOptions[0],
-    order: "A_Z",
-  });
+  const breedsQuery = useGetBreedsQuery();
+  const dispatch = useAppDispatch();
+  const filters = useAppSelector((state) => state.breedSlice.filters);
 
-  const getBreedsSelect = useMemo(() => {
-    if (!breedsInfo.isLoading && breedsInfo.data) {
-      return getBreedsNames(breedsInfo.data);
+  const breedsSelectOptions = useMemo((): BreedsBreedOption[] => {
+    if (!breedsQuery.isLoading && breedsQuery.data) {
+      return getBreedsSelectOptions(breedsQuery.data, "All breeds");
     }
-    return breedsDefaultOptions;
-  }, [breedsInfo.data]);
+    return breedBreedsDafaultOptions;
+  }, [breedsQuery.data]);
 
   return (
     <div className="w-full flex gap-3 items-center ml-3">
       <CustomSelect
         label=""
         name="breed"
-        options={getBreedsSelect}
-        value={filters.breed.name}
+        options={breedsSelectOptions}
+        value={filters.breed}
         setValue={(value) => {
-          if (breedsInfo.data) {
-            const id = getBreedId(value, breedsInfo.data);
-            setFilters({ ...filters, breed: { id, name: value } });
-          } else setFilters({ ...filters, breed: { id: "", name: value } });
+          dispatch(setBreed({ breed: value }));
         }}
         className="w-full min-w-[100px] bg-slate-100"
       />
@@ -47,26 +39,24 @@ const BreedsFilters = () => {
         name="limit"
         options={breedLimitOptions}
         value={filters.limit}
-        setValue={(value) => setFilters({ ...filters, limit: value })}
+        setValue={(value) => dispatch(setLimit({ limit: value }))}
         className="w-full min-w-[100px] bg-slate-100"
       />
       <IconButton
-        color={filters.order === "A_Z" ? "red" : "gray"}
+        color={filters.order === false ? "red" : "gray"}
         icon={<SortIconAZ />}
         size="large"
-        className=""
         onClick={() => {
-          setFilters({ ...filters, order: "A_Z" });
+          filters.order !== false && dispatch(setOrder({ order: false }));
         }}
       />
       <IconButton
-        color={filters.order === "Z_A" ? "red" : "gray"}
+        color={filters.order === true ? "red" : "gray"}
         icon={<SortIconZA />}
         size="large"
         onClick={() => {
-          setFilters({ ...filters, order: "Z_A" });
+          filters.order !== true && dispatch(setOrder({ order: true }));
         }}
-        className=""
       />
     </div>
   );

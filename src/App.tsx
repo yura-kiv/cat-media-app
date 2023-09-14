@@ -5,7 +5,7 @@ function App() {
   return (
     <div
       id="App"
-      className="relative w-full min-h-screen flex items-top justify-between pb-3 pt-8"
+      className="relative max-w-full min-h-screen flex items-top justify-between pb-3 pt-8"
     >
       <AppRouter />
     </div>

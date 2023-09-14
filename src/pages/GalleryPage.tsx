@@ -8,10 +8,11 @@ import GalleryGrid from "../components/ImagesGrid/GalleryGrid";
 import PageHeader from "../components/PageHeader/PageHeader";
 import styles from "./styles/Pages.module.css";
 import UploadWindow from "../components/UploadWindow/UploadWindow";
+import GalleryPagination from "../components/Pagination/GalleryPagination";
 
 const GalleryPage = () => {
-  const [uploadWindowActive, setUploadWindowActive] = useState<boolean>(false);
   const app = document.getElementById("App");
+  const [uploadWindowActive, setUploadWindowActive] = useState<boolean>(false);
   return (
     <div className={styles.pageWrapper}>
       {uploadWindowActive &&
@@ -29,7 +30,7 @@ const GalleryPage = () => {
               setUploadWindowActive((prev) => !prev);
             }}
             color="red"
-            size="small"
+            size="large"
             className="ml-auto"
             innerContent={
               <>
@@ -42,6 +43,7 @@ const GalleryPage = () => {
       </PageHeader>
       <GalleryFilters />
       <GalleryGrid />
+      <GalleryPagination />
     </div>
   );
 };

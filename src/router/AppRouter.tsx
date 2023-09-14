@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { routes, mainPageRoute } from "./routes";
-import Layout from "../layouts/Layout";
+import LayoutMain from "../layouts/LayoutMain";
 import LayoutRightSectionHeader from "../layouts/LayoutRightSectionHeader";
 
 const AppRouter = () => {
@@ -9,7 +9,7 @@ const AppRouter = () => {
     <Routes>
       <Route
         path="/"
-        element={<Layout />}
+        element={<LayoutMain />}
       >
         <Route {...mainPageRoute} />
         <Route

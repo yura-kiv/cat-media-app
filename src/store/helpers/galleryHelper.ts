@@ -1,23 +1,18 @@
-import { BreedRes } from "../../models/catApi";
-import { GalleryBreed, GalleryLimit, GalleryOrder, GalleryType } from "../../models/filters";
-
 export type getCatImagesParams = {
-  order: GalleryOrder;
-  type: GalleryType;
-  breedId: GalleryBreed;
-  limit: GalleryLimit;
+  order: string;
+  type: string;
+  breed: string;
+  limit: string;
   page: number;
 };
 
 export const getCatImagesUrl = ({
   limit,
   type,
-  breedId,
+  breed,
   order,
   page,
 }: getCatImagesParams): string => {
-  const limitValue = limit.split(" ")[0];
   const typeValue = type === "All" ? "" : type === "Static" ? "jpg,png" : "gif";
-  const breedValue = breedId === ("None" || "") ? "" : breedId;
-  return `images/search?limit=${limitValue}&mime_types=${typeValue}&order=${order}&size=small&page=${page}&breed_ids=${breedValue}`;
+  return `images/search?limit=${limit}&mime_types=${typeValue}&order=${order}&size=&page=${page}&breed_ids=${breed}`;
 };

@@ -1,40 +1,40 @@
-import React, { useEffect, useMemo, memo, useState } from "react";
+import React, { useEffect, useMemo, memo } from "react";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import IconButton from "../Buttons/IconButton";
 import { ReactComponent as ReloadIcon } from "../../assets/icons/update-20.svg";
+import { useAppDispatch, useAppSelector } from "../../hooks/store";
 import {
-  orderOptions,
-  typeOptions,
+  fetchCatImages,
+  setBreed,
+  setLimit,
+  setOrder,
+  setPaginationFilters,
+  setType,
+} from "../../store/slices/gallerySlice";
+import { useGetBreedsQuery } from "../../store/api/breedsQuery";
+import { getBreedsSelectOptions } from "../../helpers/breedsHelper";
+import { GalleryBreedOption } from "./galleryFiltersTypes";
+import {
+  galleryBreedDafaultOptions,
   galleryLimitOptions,
-  breedsDefaultOptions,
-  getBreedsNames,
-  getBreedId,
-} from "../helpers/filtersAssets";
-import { useAppDispatch } from "../../hooks/store";
-import { fetchCatImages } from "../../store/slices/gallerySlice";
-import { useGetBreedsQuery } from "../../store/api/endpointsQuery";
-import { GalleryFilters as IGalleryFilters } from "../../models/filters";
+  galleryOrderOptions,
+  galleryTypeOptions,
+} from "./galleryFiltersOptions";
 
 const GalleryFilters = memo(() => {
   const dispatch = useAppDispatch();
   const breedsInfo = useGetBreedsQuery();
-  const [filters, setFilters] = useState<IGalleryFilters>({
-    order: orderOptions[0],
-    breed: { name: breedsDefaultOptions[0], id: "" },
-    limit: galleryLimitOptions[0],
-    type: typeOptions[0],
-    page: 1,
-  });
+  const filters = useAppSelector((state) => state.gallerySlice.filters);
 
-  const getBreedsSelect = useMemo(() => {
+  const breedsSelectOptions = useMemo((): GalleryBreedOption[] => {
     if (!breedsInfo.isLoading && breedsInfo.data) {
-      return getBreedsNames(breedsInfo.data);
+      return getBreedsSelectOptions(breedsInfo.data, "None");
     }
-    return breedsDefaultOptions;
+    return galleryBreedDafaultOptions;
   }, [breedsInfo.data]);
 
   useEffect(() => {
-    dispatch(fetchCatImages({ ...filters, breedId: filters.breed.id }));
+    dispatch(fetchCatImages({ ...filters, page: 0 }));
   }, []);
 
   return (
@@ -43,20 +43,20 @@ const GalleryFilters = memo(() => {
         <CustomSelect
           label="Order"
           name="order"
-          options={orderOptions}
+          options={galleryOrderOptions}
           value={filters.order}
           setValue={(value) => {
-            setFilters({ ...filters, order: value });
+            dispatch(setOrder({ order: value }));
           }}
           className="w-full"
         />
         <CustomSelect
           label="Type"
           name="type"
-          options={typeOptions}
+          options={galleryTypeOptions}
           value={filters.type}
           setValue={(value) => {
-            setFilters({ ...filters, type: value });
+            dispatch(setType({ type: value }));
           }}
           className="w-full"
         />
@@ -65,13 +65,10 @@ const GalleryFilters = memo(() => {
         <CustomSelect
           label="Breed"
           name="breed"
-          options={getBreedsSelect}
-          value={filters.breed.name}
+          options={breedsSelectOptions}
+          value={filters.breed}
           setValue={(value) => {
-            if (breedsInfo.data) {
-              const id = getBreedId(value, breedsInfo.data);
-              setFilters({ ...filters, breed: { id, name: value } });
-            } else setFilters({ ...filters, breed: { id: "", name: value } });
+            dispatch(setBreed({ breed: value }));
           }}
           className="w-full"
         />
@@ -81,7 +78,7 @@ const GalleryFilters = memo(() => {
           options={galleryLimitOptions}
           value={filters.limit}
           setValue={(value) => {
-            setFilters({ ...filters, limit: value });
+            dispatch(setLimit({ limit: value }));
           }}
           className="w-full"
         />
@@ -91,7 +88,8 @@ const GalleryFilters = memo(() => {
           icon={<ReloadIcon />}
           className="self-end"
           onClick={() => {
-            dispatch(fetchCatImages({ ...filters, breedId: filters.breed.id }));
+            dispatch(setPaginationFilters({ filters }));
+            dispatch(fetchCatImages({ ...filters, page: 0 }));
           }}
         />
       </div>
