@@ -29,7 +29,7 @@ const Pagination: React.FC<PaginationProps> = ({ limit, dataCount, activePage, s
       pageLinkClassName={styles.link}
       activeClassName={styles.active}
       disabledClassName={styles.disable}
-      breakLabel="..."
+      breakLabel={<span className="text-gray-700 dark:text-gray-100">—</span>}
       nextLabel={
         <Button
           color="red"

@@ -38,7 +38,7 @@ const GalleryFilters = memo(() => {
   }, []);
 
   return (
-    <div className="w-full h-fit bg-gray-100 rounded-2xl p-5 mb-3">
+    <div className="w-full h-fit bg-gray-100 rounded-2xl p-5 mb-3 dark:bg-neutral-800">
       <div className="w-full row-wrapper flex mb-3 gap-3">
         <CustomSelect
           label="Order"
@@ -48,7 +48,8 @@ const GalleryFilters = memo(() => {
           setValue={(value) => {
             dispatch(setOrder({ order: value }));
           }}
-          className="w-full"
+          classNameWrapper="w-full"
+          classNameSelect="w-full"
         />
         <CustomSelect
           label="Type"
@@ -58,7 +59,8 @@ const GalleryFilters = memo(() => {
           setValue={(value) => {
             dispatch(setType({ type: value }));
           }}
-          className="w-full"
+          classNameWrapper="w-full"
+          classNameSelect="w-full"
         />
       </div>
       <div className="w-full row-wrapper flex gap-3">
@@ -70,7 +72,8 @@ const GalleryFilters = memo(() => {
           setValue={(value) => {
             dispatch(setBreed({ breed: value }));
           }}
-          className="w-full"
+          classNameWrapper="w-full"
+          classNameSelect="w-full"
         />
         <CustomSelect
           label="Limit"
@@ -80,7 +83,8 @@ const GalleryFilters = memo(() => {
           setValue={(value) => {
             dispatch(setLimit({ limit: value }));
           }}
-          className="w-full"
+          classNameWrapper="w-full"
+          classNameSelect="w-full"
         />
         <IconButton
           color="white"

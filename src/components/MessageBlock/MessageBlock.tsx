@@ -9,7 +9,8 @@ interface MessageBlockProps {
 
 const MessageBlock: React.FC<MessageBlockProps> = ({ innerContent, color, icon }) => {
   const messageBlockColor =
-    styles.messageBlockWrapper + (color === "gray" ? " bg-gray-100" : " bg-red-300");
+    styles.messageBlockWrapper +
+    (color === "gray" ? " bg-gray-100 dark:bg-neutral-900" : " bg-red-300");
   return (
     <div className={messageBlockColor}>
       {icon}

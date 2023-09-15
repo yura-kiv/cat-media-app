@@ -10,6 +10,7 @@ import { useAppSelector } from "../../hooks/store";
 import Loader from "../Loader/Loader";
 import { filterBreeds } from "../../helpers/breedsHelper";
 import { getGridElement } from "./gridHelper";
+import defaultImage from "../../assets/images/upload-bg.png";
 
 export const BreedHoverButton: React.FC<{ breedInfo: BreedRes }> = ({ breedInfo }) => {
   return (
@@ -48,8 +49,9 @@ const BreedsGrid = () => {
         <ImagesGrid
           elements={breedsInfo.data.map((breed) => {
             const { id, image } = breed;
+            const imaegValue = image ? image.url : defaultImage;
             return getGridElement(
-              { id, src: image?.url, alt: id + " breed grid image" },
+              { id, src: imaegValue, alt: id + " breed grid image" },
               <BreedHoverButton breedInfo={breed} />
             );
           })}

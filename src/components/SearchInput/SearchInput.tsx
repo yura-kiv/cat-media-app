@@ -23,7 +23,7 @@ const SearchInput: React.FC = ({}) => {
           setValue(e.target.value);
         }}
         className="grow rounded-[20px] pl-5 pr-16 py-4 text-xl hover:ring-2 hover:ring-red-200
-                  focus:outline-none focus:ring-2 focus:ring-red-400"
+                  focus:outline-none focus:ring-2 focus:ring-red-400 dark:bg-neutral-700 dark:text-gray-300"
       />
       <div className="absolute right-2.5">
         <IconButton

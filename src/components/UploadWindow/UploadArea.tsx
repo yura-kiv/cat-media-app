@@ -52,7 +52,7 @@ const UploadArea: React.FC<UploadAreaProps> = ({ imageFile, setImageFile }) => {
         ) : (
           <>
             {!isDragActive && (
-              <span className="text-lg z-10 text-gray-500">
+              <span className="text-lg z-10 text-gray-500 dark:text-gray-800">
                 <b className="text-black">Drag here</b> your file or{" "}
                 <b className="text-black">Click here</b> to upload
               </span>
@@ -74,7 +74,7 @@ const UploadArea: React.FC<UploadAreaProps> = ({ imageFile, setImageFile }) => {
         )}
       </div>
       {!imageFile ? (
-        <span className="block w-full text-center text-lg text-gray-500 mb-3">
+        <span className="block w-full text-center text-lg text-gray-500 mb-3 dark:text-gray-300">
           No file selected :(
         </span>
       ) : (

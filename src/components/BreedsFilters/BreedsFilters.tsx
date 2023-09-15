@@ -32,7 +32,8 @@ const BreedsFilters = () => {
         setValue={(value) => {
           dispatch(setBreed({ breed: value }));
         }}
-        className="w-full min-w-[100px] bg-slate-100"
+        classNameSelect="w-full"
+        classNameWrapper="grow min-w-[150px]"
       />
       <CustomSelect
         label=""
@@ -40,7 +41,8 @@ const BreedsFilters = () => {
         options={breedLimitOptions}
         value={filters.limit}
         setValue={(value) => dispatch(setLimit({ limit: value }))}
-        className="w-full min-w-[100px] bg-slate-100"
+        classNameSelect=""
+        classNameWrapper="min-w-[100px]"
       />
       <IconButton
         color={filters.order === false ? "red" : "gray"}

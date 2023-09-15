@@ -1,5 +1,9 @@
+.btn {
+  @apply dark:bg-neutral-700;
+}
+
 .activeBtn button {
-  @apply bg-red-400;
+  @apply bg-red-400 dark:bg-red-400;
 }
 
 .activeBtn button svg path {

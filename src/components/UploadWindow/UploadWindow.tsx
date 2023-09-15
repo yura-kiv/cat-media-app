@@ -93,10 +93,10 @@ const UploadWindow: React.FC<UploadWindowProps> = ({ active, setActive }) => {
             setActive((prev) => !prev);
           }}
         />
-        <span className="block text-center text-3xl font-medium mb-3">
+        <span className="block text-center text-3xl font-medium mb-3 dark:text-gray-100">
           Upload a .jpg or .png Cat Image
         </span>
-        <span className="block text-center text-lg text-gray-500 mb-3">
+        <span className="block text-center text-lg text-gray-500 mb-3 dark:text-gray-400">
           Any uploads must comply with the{" "}
           <a
             className="text-red-300"

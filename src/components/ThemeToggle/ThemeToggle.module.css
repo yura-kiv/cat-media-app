@@ -1,0 +1,22 @@
+.themeToggleWrapper {
+  @apply flex items-center gap-1;
+}
+
+.themeEye {
+  @apply w-8 h-8 flex items-center justify-center bg-white rounded-full dark:bg-neutral-700;
+}
+
+.themeToggle {
+  @apply w-11 px-1 h-6 bg-red-100 rounded-full grid items-center;
+}
+
+.themeToggleCircle {
+  @apply w-4 h-4 bg-red-300 rounded-full transition-all;
+}
+
+.themeToggleCircleLight {
+  @apply translate-x-5;
+}
+
+.themeToggleCircleDark {
+}

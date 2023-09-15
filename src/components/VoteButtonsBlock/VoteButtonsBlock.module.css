@@ -1,6 +1,6 @@
 .reactionBtnsWrapper {
   @apply absolute w-44 h-16 border-4 border-white rounded-2xl flex gap-0.5 overflow-hidden bg-white
-      -bottom-8 left-1/2 -translate-x-1/2;
+      -bottom-8 left-1/2 -translate-x-1/2 dark:border-neutral-700 dark:bg-neutral-700;
 }
 
 .reactionBtn {

@@ -22,6 +22,7 @@ const NavigationIconButton: React.FC<NavigationIconButtonProps> = ({ icon, to })
         color="white"
         icon={icon}
         size="large"
+        className={styles.btn}
       />
     </NavLink>
   );

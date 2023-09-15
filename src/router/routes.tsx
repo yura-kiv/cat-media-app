@@ -5,10 +5,14 @@ import FavouritesPage from "../pages/FavouritesPage";
 import GalleryPage from "../pages/GalleryPage";
 import LikesPage from "../pages/LikesPage";
 import MainPage from "../pages/MainPage";
+import NotFoundPage from "../pages/NotFoundPage";
 import SearchPage from "../pages/SearchPage";
 import VotingPage from "../pages/VotingPage";
 
-export const mainPageRoute = { index: true, element: <MainPage /> };
+export const mainLayoutRoutes = [
+  { index: true, element: <MainPage /> },
+  { path: "*", element: <NotFoundPage />, exact: true },
+];
 
 export const routes = [
   { path: "/voting", element: <VotingPage />, exact: true },
@@ -19,4 +23,5 @@ export const routes = [
   { path: "/likes", element: <LikesPage />, exact: true },
   { path: "/dislikes", element: <DislikesPage />, exact: true },
   { path: "/favourites", element: <FavouritesPage />, exact: true },
+  { path: "*", element: <NotFoundPage />, exact: true },
 ];

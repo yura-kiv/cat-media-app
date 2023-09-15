@@ -18,7 +18,9 @@ const UserLogsTable: React.FC<UserLogsTableProps> = ({ categories }) => {
   return (
     <div className="user-logs-wrapper">
       {filteredLogs.length !== 0 && (
-        <span className="block text-gray-800 mt-3 ml-3 text-lg font-medium">User logs:</span>
+        <span className="block text-gray-800 mt-3 ml-3 text-lg font-medium dark:text-gray-100">
+          User logs:
+        </span>
       )}
       <div className="flex flex-col gap-3 mt-3">
         {filteredLogs
@@ -28,12 +30,15 @@ const UserLogsTable: React.FC<UserLogsTableProps> = ({ categories }) => {
                 key={imageId + time}
                 color="gray"
                 icon={
-                  <span className="rounded-xl py-1 px-2.5 bg-white">{getHoursMinutes(time)}</span>
+                  <span className="rounded-xl py-1 px-2.5 bg-white dark:bg-neutral-500 dark:text-gray-100">
+                    {getHoursMinutes(time)}
+                  </span>
                 }
                 innerContent={
                   <div className="flex justify-between items-center w-full">
-                    <p className="block text-gray-700 mr-3">
-                      Image ID: <span className="font-medium text-black">{imageId} </span>
+                    <p className="block text-gray-700 mr-3 dark:text-gray-300">
+                      Image ID:{" "}
+                      <span className="font-medium text-black dark:text-gray-100">{imageId} </span>
                       {category === "dislike" || category === "like"
                         ? "was added to "
                         : status
