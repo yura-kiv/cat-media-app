@@ -93,3 +93,12 @@ export interface UploadImageRes {
   url: string;
   width: number;
 }
+
+export type VoteRes = {
+  message: string;
+  id: number;
+  image_id: string;
+  sub_id: string;
+  value: boolean;
+  country_code: string;
+};

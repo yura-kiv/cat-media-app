@@ -1,20 +1,13 @@
 import { subID } from "../..";
-import { LikeImageRes } from "../../models/catApi";
+import { LikeImageRes, VoteRes } from "../../models/catApi";
 import { catApiQuery } from "./catApi";
 
-type VoteRes = {
-  message: string;
-  id: number;
-  image_id: string;
-  sub_id: string;
-  value: boolean;
-  country_code: string;
-};
+// e7b8a30b-0475-46a6-9adb-0f950bf608eb
 
 const extendedApi = catApiQuery.injectEndpoints({
   endpoints: (builder) => ({
     getVoteImages: builder.query<LikeImageRes[], void>({
-      query: () => ({ url: `votes` }),
+      query: () => ({ url: `votes?sub_id=${subID}` }),
       providesTags: (result) =>
         result
           ? [
