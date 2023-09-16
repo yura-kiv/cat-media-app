@@ -8,7 +8,7 @@ const MainPage: React.FC = () => {
       <img
         className="absolute top-0 right-0 w-full h-full object-cover"
         src={girlAndPetImg}
-        alt="Girl with pet main page photo"
+        alt="Girl with pet main page"
       ></img>
     </div>
   );

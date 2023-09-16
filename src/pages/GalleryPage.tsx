@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
-import IconButton from "../components/Buttons/IconButton";
 import { ReactComponent as UploadIcon } from "../assets/icons/upload-16.svg";
 import Button from "../components/Buttons/Button";
 import GalleryFilters from "../components/GalleryFilters/GalleryFilters";

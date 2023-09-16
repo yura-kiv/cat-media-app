@@ -1,10 +1,9 @@
-import React, { SetStateAction, Dispatch, useEffect, useCallback, useState } from "react";
+import React, { SetStateAction, Dispatch, useEffect, useState } from "react";
 import styles from "./UploadWindow.module.css";
 import IconButton from "../Buttons/IconButton";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close-20.svg";
 import UploadArea, { ImageFile } from "./UploadArea";
 import Button from "../Buttons/Button";
-import { API_SUB_ID, catApiThunk } from "../../store/api/catApi";
 import { UploadImageRes } from "../../models/catApi";
 import { AxiosError } from "axios";
 import Loader from "../Loader/Loader";
@@ -12,6 +11,8 @@ import MessageBlock from "../MessageBlock/MessageBlock";
 import { ReactComponent as Success } from "../../assets/icons/success-20.svg";
 import { ReactComponent as Error } from "../../assets/icons/error-20.svg";
 import { dataURItoBlob } from "../../helpers/uploadHelper";
+import { catApiThunk } from "../../store/api/catApi";
+import { subID } from "../..";
 
 interface UploadWindowProps {
   active: boolean;
@@ -39,7 +40,7 @@ const UploadWindow: React.FC<UploadWindowProps> = ({ active, setActive }) => {
           "images/upload",
           {
             file: fileBinary,
-            sub_id: API_SUB_ID,
+            sub_id: subID,
           },
           {
             headers: {

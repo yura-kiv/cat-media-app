@@ -1,5 +1,6 @@
+import { subID } from "../..";
 import { LikeImageRes } from "../../models/catApi";
-import { API_SUB_ID, catApiQuery } from "./catApi";
+import { catApiQuery } from "./catApi";
 
 type VoteRes = {
   message: string;
@@ -29,7 +30,7 @@ const extendedApi = catApiQuery.injectEndpoints({
         body: {
           image_id: id,
           value: vote ? 1 : -1,
-          sub_id: API_SUB_ID,
+          sub_id: subID,
         },
       }),
       invalidatesTags: [{ type: "Votes", id: "VOTES_LIST" }],

@@ -1,7 +1,6 @@
 import { BreedRes } from "../models/catApi";
 import { BreedFilters } from "../components/BreedsFilters/breedFiltersTypes";
 import { GalleryBreedOption } from "../components/GalleryFilters/galleryFiltersTypes";
-import { ImagesGridProps } from "../components/ImagesGrid/ImagesGrid";
 
 export const paginateList = (data: any[], page: number, limit: number) => {
   const startIndex = page * limit;

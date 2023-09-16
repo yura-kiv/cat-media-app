@@ -38,7 +38,7 @@ const BreedsSlider: React.FC<{ id: string }> = ({ id }) => {
               >
                 <img
                   src={image.url}
-                  alt={`Image of breed id: ${id}, image id:${image.id}}`}
+                  alt={`Breed id: ${id}, imagePreview id:${image.id}}`}
                   className="raletive w-full h-full object-cover"
                 />
               </SwiperSlide>

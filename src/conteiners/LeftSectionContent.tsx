@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import logo from "../assets/images/logo.png";
 import NavigationMenu from "../components/NavigationMenu/NavigationMenu";
 import { Link } from "react-router-dom";
 import ThemeToggle from "../components/ThemeToggle/ThemeToggle";

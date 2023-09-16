@@ -8,6 +8,7 @@ import { ReactComponent as Error } from "../assets/icons/error-20.svg";
 import MessageBlock from "../components/MessageBlock/MessageBlock";
 import Loader from "../components/Loader/Loader";
 import { LikeImageRes } from "../models/catApi";
+import { catApiThunk } from "../store/api/catApi";
 
 const LikesPage = () => {
   const { isError, isLoading, likedImages } = useGetVoteImagesQuery(undefined, {

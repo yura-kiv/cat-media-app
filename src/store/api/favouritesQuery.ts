@@ -1,10 +1,11 @@
+import { subID } from "../..";
 import { FavouriteImageRes } from "../../models/catApi";
-import { API_SUB_ID, catApiQuery } from "./catApi";
+import { catApiQuery } from "./catApi";
 
 const extendedApi = catApiQuery.injectEndpoints({
   endpoints: (builder) => ({
     getFavouriteImages: builder.query<FavouriteImageRes[], void>({
-      query: () => ({ url: `favourites?&sub_id=${API_SUB_ID}` }),
+      query: () => ({ url: `favourites?&sub_id=${subID}` }),
       providesTags: (result) =>
         result
           ? [
@@ -19,7 +20,7 @@ const extendedApi = catApiQuery.injectEndpoints({
         method: "POST",
         body: {
           image_id: id,
-          sub_id: API_SUB_ID,
+          sub_id: subID,
         },
       }),
       invalidatesTags: [{ type: "Favourites", id: "FAV_LIST" }],

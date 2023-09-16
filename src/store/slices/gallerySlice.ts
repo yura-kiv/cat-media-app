@@ -81,9 +81,6 @@ export const gallerySlice = createSlice({
       if (action.payload.filters.order === "RAND") state.pagination.showPagination = false;
       else state.pagination.showPagination = true;
     },
-    setFiltersToinitialState: (state) => {
-      state.filters = initialState.filters;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -100,13 +97,6 @@ export const gallerySlice = createSlice({
   },
 });
 
-export const {
-  setBreed,
-  setFiltersToinitialState,
-  setLimit,
-  setOrder,
-  setType,
-  setPaginationFilters,
-} = gallerySlice.actions;
+export const { setBreed, setLimit, setOrder, setType, setPaginationFilters } = gallerySlice.actions;
 
 export default gallerySlice.reducer;

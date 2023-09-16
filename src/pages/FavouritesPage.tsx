@@ -8,8 +8,6 @@ import { getGridElement } from "../components/ImagesGrid/gridHelper";
 import Loader from "../components/Loader/Loader";
 import MessageBlock from "../components/MessageBlock/MessageBlock";
 import { FavouriteHoverButton } from "../components/ImagesGrid/GalleryGrid";
-import { useAppSelector } from "../hooks/store";
-import { getHoursMinutes } from "../helpers/pagesHelper";
 import UserLogsTable from "../components/UserLogsTable/UserLogsTable";
 
 const FavouritesPage = () => {

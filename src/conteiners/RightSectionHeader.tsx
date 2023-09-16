@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchInput from "../components/SearchInput/SearchInput";
 import IconButton from "../components/Buttons/IconButton";
 import { ReactComponent as SmileIcon } from "../assets/icons/like-30.svg";

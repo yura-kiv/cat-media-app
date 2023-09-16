@@ -62,7 +62,7 @@ export interface CatImageRes {
 export interface FavouriteImageRes {
   id: number;
   image_id: string;
-  sub_id: null;
+  sub_id: string;
   created_at: string;
   image: {
     id: string;

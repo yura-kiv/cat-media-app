@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import styles from "./styles/Pages.module.css";
 import { CatImageRes } from "../models/catApi";
-import { API_SUB_ID, catApiThunk } from "../store/api/catApi";
+import { catApiThunk } from "../store/api/catApi";
 import Loader from "../components/Loader/Loader";
 import MessageBlock from "../components/MessageBlock/MessageBlock";
 import { ReactComponent as Error } from "../assets/icons/error-20.svg";
 import UserLogsTable from "../components/UserLogsTable/UserLogsTable";
 import { VoteButtonsBlock } from "../components/VoteButtonsBlock/VoteButtonsBlock";
+import { subID } from "..";
 
 const VotingPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -20,7 +21,7 @@ const VotingPage = () => {
     setImage(undefined);
     setError(null);
     catApiThunk
-      .get(`images/search?limit=1&size=full&sub_id=${API_SUB_ID}`)
+      .get(`images/search?limit=1&size=full&sub_id=${subID}`)
       .then((response) => {
         setLoading(false);
         setImage(response.data[0]);
