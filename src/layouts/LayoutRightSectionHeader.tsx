@@ -6,7 +6,7 @@ const LayoutRightSectionHeader = () => {
   return (
     <div
       id="right-section"
-      className="relative w-1/2 pr-5"
+      className="relative w-1/2 pr-5 max-lg:w-full max-lg:px-5"
     >
       <RightSectionHeader />
       <Outlet />

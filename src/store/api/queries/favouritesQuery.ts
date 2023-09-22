@@ -1,6 +1,6 @@
-import { subID } from "../..";
-import { FavouriteImageRes } from "../../models/catApi";
-import { catApiQuery } from "./catApi";
+import { subID } from "../../..";
+import { FavouriteImageRes } from "../../../models/catApi";
+import { catApiQuery } from ".././catApi";
 
 const extendedApi = catApiQuery.injectEndpoints({
   endpoints: (builder) => ({

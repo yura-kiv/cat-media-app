@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import styles from "./styles/Pages.module.css";
 import { CatImageRes } from "../models/catApi";
-import { catApiThunk } from "../store/api/catApi";
+import { catApiThunk } from "../services/api";
 import Loader from "../components/Loader/Loader";
 import MessageBlock from "../components/MessageBlock/MessageBlock";
 import { ReactComponent as Error } from "../assets/icons/error-20.svg";
-import UserLogsTable from "../components/UserLogsTable/UserLogsTable";
+import UserLogsTable from "../conteiners/UserLogsTable";
 import { VoteButtonsBlock } from "../components/VoteButtonsBlock/VoteButtonsBlock";
 import { subID } from "..";
 

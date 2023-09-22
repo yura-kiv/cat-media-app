@@ -2,10 +2,14 @@ import React from "react";
 import LeftSectionContent from "../conteiners/LeftSectionContent";
 import { Outlet } from "react-router-dom";
 
-const LayoutMain: React.FC = () => {
+interface LayoutMainProps {
+  isShowLeftSectionInMobile: boolean;
+}
+
+const LayoutMain: React.FC<LayoutMainProps> = ({ isShowLeftSectionInMobile }) => {
   return (
     <>
-      <LeftSectionContent />
+      <LeftSectionContent className={isShowLeftSectionInMobile ? "" : "max-lg:hidden"} />
       <Outlet />
     </>
   );

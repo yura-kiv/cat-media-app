@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles/Pages.module.css";
 import PageHeader from "../components/PageHeader/PageHeader";
 import ImagesGrid from "../components/ImagesGrid/ImagesGrid";
-import { useGetVoteImagesQuery } from "../store/api/votesQuery";
+import { useGetVoteImagesQuery } from "../store/api/queries/votesQuery";
 import { getGridElement } from "../components/ImagesGrid/gridHelper";
 import { ReactComponent as Error } from "../assets/icons/error-20.svg";
 import MessageBlock from "../components/MessageBlock/MessageBlock";

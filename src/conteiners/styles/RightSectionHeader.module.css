@@ -1,0 +1,23 @@
+.btn {
+  @apply dark:bg-neutral-700;
+}
+
+.activeBtn button {
+  @apply bg-red-400 dark:bg-red-400;
+}
+
+.activeBtn button svg path {
+  @apply fill-white;
+}
+
+.mobileNavigationMenuWrapper {
+  @apply fixed flex justify-center w-screen h-screen bg-slate-100 dark:bg-neutral-900 lg:hidden transition-all;
+}
+
+.mobileNavigationMenuActive {
+  @apply fixed top-0 left-0 z-50 lg:hidden;
+}
+
+.mobileNavigationMenuDisable {
+  @apply fixed top-0 -left-[110%] z-50 lg:hidden;
+}

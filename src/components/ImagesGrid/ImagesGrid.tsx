@@ -23,7 +23,7 @@ const ImagesGrid: React.FC<{ elements: ImagesGridProps[] }> = ({ elements }) => 
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-2.5">
       {imagesGridMatrix().map((row, index) => {
         return (
           <div

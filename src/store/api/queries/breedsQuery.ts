@@ -1,5 +1,5 @@
-import { BreedRes, CatImageRes } from "../../models/catApi";
-import { catApiQuery } from "./catApi";
+import { BreedRes, CatImageRes } from "../../../models/catApi";
+import { catApiQuery } from "../catApi";
 
 const extendedApi = catApiQuery.injectEndpoints({
   endpoints: (builder) => ({

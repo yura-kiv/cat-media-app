@@ -11,7 +11,7 @@ import {
   setPaginationFilters,
   setType,
 } from "../../store/slices/gallerySlice";
-import { useGetBreedsQuery } from "../../store/api/breedsQuery";
+import { useGetBreedsQuery } from "../../store/api/queries/breedsQuery";
 import { getBreedsSelectOptions } from "../../helpers/breedsHelper";
 import { GalleryBreedOption } from "./galleryFiltersTypes";
 import {

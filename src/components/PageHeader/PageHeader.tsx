@@ -11,7 +11,7 @@ interface PageHeaderProps {
 const PageHeader: React.FC<PageHeaderProps> = ({ pageName, children }) => {
   const navigate = useNavigate();
   return (
-    <div className="w-full h-fit flex items-center mb-3">
+    <div className="w-full h-fit flex flex-wrap gap-3 items-center mb-3">
       <IconButton
         color="red"
         size="large"
@@ -20,7 +20,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ pageName, children }) => {
           navigate(-1);
         }}
       ></IconButton>
-      <span className="py-2 px-6 uppercase bg-red-300 text-white rounded-2xl text-xl font-medium tracking-widest ml-3">
+      <span className="py-2 px-6 uppercase bg-red-300 text-white rounded-2xl text-xl font-medium tracking-widest">
         {pageName}
       </span>
       {children}

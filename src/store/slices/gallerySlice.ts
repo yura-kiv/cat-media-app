@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { catApiThunk } from "../api/catApi";
 import { getCatImagesParams, getCatImagesUrl } from "../helpers/galleryHelper";
 import { CatImageRes } from "../../models/catApi";
 import { GalleryFilters } from "../../components/GalleryFilters/galleryFiltersTypes";
@@ -9,6 +8,7 @@ import {
   galleryOrderOptions,
   galleryTypeOptions,
 } from "../../components/GalleryFilters/galleryFiltersOptions";
+import { catApiThunk } from "../../services/api";
 
 export interface GalleryCatImages {
   filters: GalleryFilters;

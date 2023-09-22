@@ -9,7 +9,7 @@ const SearchInput: React.FC = ({}) => {
 
   return (
     <form
-      className="relative flex items-center grow"
+      className="relative flex items-center grow max-sm:order-last max-sm:w-full"
       onSubmit={(event) => {
         event.preventDefault();
       }}

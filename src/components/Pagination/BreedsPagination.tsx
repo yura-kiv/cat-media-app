@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/store";
-import { useGetBreedsQuery } from "../../store/api/breedsQuery";
+import { useGetBreedsQuery } from "../../store/api/queries/breedsQuery";
 import { setPage } from "../../store/slices/breedSlice";
 import Pagination from "./Pagination";
 

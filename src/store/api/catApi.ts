@@ -1,8 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import axios from "axios";
-
-const API_URL = process.env.REACT_APP_CAT_API_URL;
-const API_KEY = process.env.REACT_APP_CAT_API_KEY;
+import { API_KEY, API_URL } from "../../services/api";
 
 export const catApiQuery = createApi({
   reducerPath: "catApi",
@@ -18,11 +15,4 @@ export const catApiQuery = createApi({
     },
   }),
   endpoints: () => ({}),
-});
-
-export const catApiThunk = axios.create({
-  baseURL: API_URL,
-  headers: {
-    "x-api-key": API_KEY,
-  },
 });

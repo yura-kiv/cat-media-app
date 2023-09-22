@@ -11,7 +11,7 @@ import MessageBlock from "../MessageBlock/MessageBlock";
 import { ReactComponent as Success } from "../../assets/icons/success-20.svg";
 import { ReactComponent as Error } from "../../assets/icons/error-20.svg";
 import { dataURItoBlob } from "../../helpers/uploadHelper";
-import { catApiThunk } from "../../store/api/catApi";
+import { catApiThunk } from "../../services/api";
 import { subID } from "../..";
 
 interface UploadWindowProps {

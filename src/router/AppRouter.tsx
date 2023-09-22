@@ -9,7 +9,7 @@ const AppRouter = () => {
     <Routes>
       <Route
         path="/"
-        element={<LayoutMain />}
+        element={<LayoutMain isShowLeftSectionInMobile={true} />}
       >
         {mainLayoutRoutes.map((route, index) => (
           <Route
@@ -17,6 +17,11 @@ const AppRouter = () => {
             {...route}
           />
         ))}
+      </Route>
+      <Route
+        path="/"
+        element={<LayoutMain isShowLeftSectionInMobile={false} />}
+      >
         <Route
           path="/"
           element={<LayoutRightSectionHeader />}

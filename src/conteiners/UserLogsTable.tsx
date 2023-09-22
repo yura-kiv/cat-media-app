@@ -1,11 +1,11 @@
 import React from "react";
-import MessageBlock from "../MessageBlock/MessageBlock";
-import { getHoursMinutes } from "../../helpers/pagesHelper";
-import { useAppSelector } from "../../hooks/store";
-import { UserLogCategory } from "../../store/slices/userLogsSlice";
-import { ReactComponent as Smile } from "../../assets/icons/like-color-20.svg";
-import { ReactComponent as SadSmile } from "../../assets/icons/dislike-color-20.svg";
-import { ReactComponent as Heart } from "../../assets/icons/fav-20.svg";
+import MessageBlock from "../components/MessageBlock/MessageBlock";
+import { getHoursMinutes } from "../helpers/pagesHelper";
+import { useAppSelector } from "../hooks/store";
+import { UserLogCategory } from "../store/slices/userLogsSlice";
+import { ReactComponent as Smile } from "../assets/icons/like-color-20.svg";
+import { ReactComponent as SadSmile } from "../assets/icons/dislike-color-20.svg";
+import { ReactComponent as Heart } from "../assets/icons/fav-20.svg";
 
 interface UserLogsTableProps {
   categories: UserLogCategory[];

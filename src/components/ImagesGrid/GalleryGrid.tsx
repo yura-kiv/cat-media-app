@@ -11,7 +11,7 @@ import {
   useAddFavouriteImageMutation,
   useDeleteFavouriteImageMutation,
   useGetFavouriteImagesQuery,
-} from "../../store/api/favouritesQuery";
+} from "../../store/api/queries/favouritesQuery";
 import { getGridElement } from "./gridHelper";
 import { setFavouriteLog } from "../../store/slices/userLogsSlice";
 import { useParams } from "react-router-dom";

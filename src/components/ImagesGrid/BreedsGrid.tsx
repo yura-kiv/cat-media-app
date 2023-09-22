@@ -3,7 +3,7 @@ import { BreedRes } from "../../models/catApi";
 import ImagesGrid, { ImagesGridProps } from "./ImagesGrid";
 import MessageBlock from "../MessageBlock/MessageBlock";
 import { ReactComponent as Error } from "../../assets/icons/error-20.svg";
-import { useGetBreedsQuery } from "../../store/api/breedsQuery";
+import { useGetBreedsQuery } from "../../store/api/queries/breedsQuery";
 import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../hooks/store";

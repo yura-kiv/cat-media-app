@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles/Pages.module.css";
 import PageHeader from "../components/PageHeader/PageHeader";
 import { useParams } from "react-router-dom";
-import { useGetBreedsQuery } from "../store/api/breedsQuery";
+import { useGetBreedsQuery } from "../store/api/queries/breedsQuery";
 import Loader from "../components/Loader/Loader";
 import ImagesGrid from "../components/ImagesGrid/ImagesGrid";
 import { ReactComponent as Error } from "../assets/icons/error-20.svg";

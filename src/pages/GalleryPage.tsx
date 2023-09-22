@@ -30,7 +30,7 @@ const GalleryPage = () => {
             }}
             color="red"
             size="large"
-            className="ml-auto"
+            className="ml-auto max-sm:m-0 max-sm:w-full max-sm:flex max-sm:justify-center"
             innerContent={
               <>
                 <UploadIcon />

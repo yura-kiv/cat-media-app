@@ -7,11 +7,11 @@
 }
 
 .windowWrapper {
-  @apply relative w-1/2 h-full ml-auto bg-white opacity-100 rounded-2xl pt-20 px-10 flex flex-col items-center dark:bg-neutral-700;
+  @apply relative w-1/2 h-full ml-auto bg-white opacity-100 rounded-2xl pt-20 px-10 flex flex-col items-center dark:bg-neutral-700 max-lg:w-full;
 }
 
 .dropFileArea {
-  @apply relative w-full mb-3 h-1/2 bg-gray-100 border-4 border-dashed border-red-300 rounded-2xl flex items-center justify-center overflow-hidden dark:bg-neutral-500;
+  @apply relative w-full mb-3 h-1/2 bg-gray-100 border-4 border-dashed border-red-300 rounded-2xl flex items-center justify-center overflow-hidden dark:bg-neutral-500 p-5;
 }
 
 .dropFileAreaActive {

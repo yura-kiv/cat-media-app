@@ -1,5 +1,6 @@
 .imgWrapper {
-  @apply relative block w-36 h-48 box-border rounded-[20px] border-4 mb-2.5 cursor-pointer transition-all hover:border-white;
+  @apply relative block w-36 h-48 box-border rounded-[20px] border-4 mb-2.5 cursor-pointer transition-all hover:border-white
+  max-sm:w-28 max-sm:h-36;
 }
 
 .imgWrapper:hover + .btn {

@@ -5,14 +5,21 @@ import galleryImg from "../../assets/images/images-search.png";
 import styles from "./styles/NavigationMenu.module.css";
 import { NavLink } from "react-router-dom";
 
-type ImageBlockProps = {
+interface ImageBlockProps {
   color: "green" | "purple" | "yellow";
   imgSrc: string;
   alt: string;
   to: string;
-};
+  onClick?: () => void;
+}
 
-const NavigationImageBlock: React.FC<ImageBlockProps> = ({ color, imgSrc, alt, to }) => {
+const NavigationImageBlock: React.FC<ImageBlockProps> = ({
+  color,
+  imgSrc,
+  alt,
+  to,
+  onClick = () => {},
+}) => {
   const bgColor = "imgWrapper_" + color;
 
   return (
@@ -23,6 +30,7 @@ const NavigationImageBlock: React.FC<ImageBlockProps> = ({ color, imgSrc, alt, t
           ? [styles.imgWrapper, styles[bgColor], styles.imgWrapperActive].join(" ")
           : [styles.imgWrapper, styles[bgColor]].join(" ")
       }
+      onClick={onClick}
     >
       <img
         className={styles.img}
@@ -33,32 +41,45 @@ const NavigationImageBlock: React.FC<ImageBlockProps> = ({ color, imgSrc, alt, t
   );
 };
 
-const NavigationButton: React.FC<{ to: string; text: string }> = ({ to, text }) => {
+interface NavigationButtonProps {
+  to: string;
+  text: string;
+  onClick?: () => void;
+}
+
+const NavigationButton: React.FC<NavigationButtonProps> = ({ to, text, onClick = () => {} }) => {
   return (
     <NavLink
       className={({ isActive, isPending }) =>
         isActive ? [styles.btn, styles.btn_active].join(" ") : styles.btn
       }
       to={to}
+      onClick={onClick}
     >
       {text}
     </NavLink>
   );
 };
 
-const NavigationMenu = () => {
+interface NavigationMenuProps {
+  onClick?: () => void;
+}
+
+const NavigationMenu: React.FC<NavigationMenuProps> = ({ onClick = () => {} }) => {
   return (
-    <nav className="flex items-center gap-4">
+    <nav className="flex items-center gap-4 max-sm:gap-2">
       <div>
         <NavigationImageBlock
           color="purple"
           to="/voting"
           imgSrc={votingImg}
           alt="Voting menu item"
+          onClick={onClick}
         />
         <NavigationButton
           to="/voting"
           text="voting"
+          onClick={onClick}
         />
       </div>
       <div>
@@ -67,10 +88,12 @@ const NavigationMenu = () => {
           to="/breeds"
           imgSrc={breedsImg}
           alt="Voting menu item"
+          onClick={onClick}
         />
         <NavigationButton
           to="/breeds"
           text="breeds"
+          onClick={onClick}
         />
       </div>
       <div>
@@ -79,10 +102,12 @@ const NavigationMenu = () => {
           to="/gallery"
           imgSrc={galleryImg}
           alt="Voting menu item"
+          onClick={onClick}
         />
         <NavigationButton
           to="/gallery"
           text="gallery"
+          onClick={onClick}
         />
       </div>
     </nav>

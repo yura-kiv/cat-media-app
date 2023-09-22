@@ -9,10 +9,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import SearchPage from "../pages/SearchPage";
 import VotingPage from "../pages/VotingPage";
 
-export const mainLayoutRoutes = [
-  { index: true, element: <MainPage /> },
-  { path: "*", element: <NotFoundPage />, exact: true },
-];
+export const mainLayoutRoutes = [{ index: true, element: <MainPage /> }];
 
 export const routes = [
   { path: "/voting", element: <VotingPage />, exact: true },

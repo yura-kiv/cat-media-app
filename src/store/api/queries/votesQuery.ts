@@ -1,8 +1,6 @@
-import { subID } from "../..";
-import { LikeImageRes, VoteRes } from "../../models/catApi";
-import { catApiQuery } from "./catApi";
-
-// e7b8a30b-0475-46a6-9adb-0f950bf608eb
+import { subID } from "../../..";
+import { LikeImageRes, VoteRes } from "../../../models/catApi";
+import { catApiQuery } from "../catApi";
 
 const extendedApi = catApiQuery.injectEndpoints({
   endpoints: (builder) => ({
