@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# A project written in React with a Typescript that uses TheCatApi endpoints (https://thecatapi.com).
+TheCatApi service gives you access to its endpoints, with which you can get pictures about cats. You can like and dislike pictures, save them to favorites and view the picture gallery.
+## Technologies used in the project:
+<ul>
+  <li>reduxjs/toolkit - React Query and Async Thunks with slices for state management</li>
+  <li>axios - for requests</li>
+  <li>react-router-dom</li>
+  <li>uuid</li>
+  <li>react-dropzone - for uploading images to server</li>
+  <li>react-paginate - pagination of cat pictures</li>
+  <li>redux-persist - for save information to localstorage</li>
+  <li>swiper - swiper for cat images gallery</li>
+  <li>typescript</li>
+  <li>tailwindcss - styles, theme control</li>
+</ul>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Main page:
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/884a29b7-6e59-4f6a-b6c5-80a136c37c76" height="500px">
 
-## Available Scripts
+## Voting page:
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/178a87ac-64da-48c9-97d2-d2d4cd11575b" height="500px">
 
-In the project directory, you can run:
+## Breeds page:
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/e1734be9-17cb-4ba0-a56b-be40aa440a61" height="500px">
 
-### `npm start`
+## Gallery page:
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/1dd13d2e-fbfc-4105-8d55-6cb18d50734b" height="500px">
+## Upload window:
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/b2597db3-b42f-4376-8f35-c88e65604a35" height="500px">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Favourites page:
+![image](https://github.com/yura-kiv/cat-media-app/assets/94392546/e0c381ba-af84-4b27-b14d-56989f81877b)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dark theme:
+![image](https://github.com/yura-kiv/cat-media-app/assets/94392546/0889889f-a5d5-4ea5-9282-8ee84e82c0df)
 
-### `npm run build`
+## Search breed name page:
+![image](https://github.com/yura-kiv/cat-media-app/assets/94392546/41de0f2f-555f-4ca2-950f-f9152a737248)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Responsive:
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/6ccb0aef-1342-440d-b32b-b602621a40a4" height="500px">
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/016a2b6c-6a24-40c0-bf96-fb62ea952ee5" height="500px">
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/f1bbaa1f-7bc3-498e-b0c6-fd83d03dbc4a" height="500px">
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/2ffd5dbd-03ab-4f9e-96ea-60ff55f977ff" height="500px">
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/ac48acef-a6da-4b7d-81b5-4dd298b125b8" height="500px">
+<img src="https://github.com/yura-kiv/cat-media-app/assets/94392546/8b6a4c68-573b-4b95-8cd8-d2007c9ef85c" height="500px">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
