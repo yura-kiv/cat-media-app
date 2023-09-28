@@ -2,6 +2,7 @@
 TheCatApi service gives you access to its endpoints, with which you can get pictures about cats. You can like and dislike pictures, save them to favorites and view the picture gallery.
 
 ## Try project by the link - https://cat-media-app.vercel.app/
+Uses data caching and mutation using rtk query, and also saves information about the user between sessions.
 
 ## Technologies used in the project:
 <ul>
