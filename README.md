@@ -1,5 +1,8 @@
 # A project written in React with a Typescript that uses TheCatApi endpoints (https://thecatapi.com).
 TheCatApi service gives you access to its endpoints, with which you can get pictures about cats. You can like and dislike pictures, save them to favorites and view the picture gallery.
+
+## Try project by the link - https://cat-media-app.vercel.app/
+
 ## Technologies used in the project:
 <ul>
   <li>reduxjs/toolkit - React Query and Async Thunks with slices for state management</li>
